@@ -24,7 +24,9 @@ int main() {
     }
 
     int *shared_multiple = &shared_mem[0]; 
-    int *shared_counter = &shared_mem[1];  
+    int *shared_counter = &shared_mem[1]; 
+    
+    // chanagble multiple 
     *shared_multiple = 5;  
     *shared_counter = 0;   
 
