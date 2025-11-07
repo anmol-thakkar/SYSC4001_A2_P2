@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <sys/types.h>
 
+// seperate files or not?????????
+
 int main() {
     pid_t pid;
     pid = fork();
@@ -11,18 +13,15 @@ int main() {
         perror ("failed fork() call");
         exit(1);
     } else if (pid == 0) {
-        int counter = 0;
-        while (1) {
-            printf("Process 1 - pid: %d, counter: %d\n", getpid(), counter ++);
-            sleep(1);
-        }
-
+        exec1("./process2", "process2", NULL);
+        perror("exec failed");
+        exit(1);
+        
     } else {
-        int counter = 0;
-        while (1) {
-            printf("Process 2 - pid: %d, counter: %d\n", getpid(), counter ++);
-            sleep(1);
-        }
+        exec1("./process1", "process1", NULL);
+        perror("exec failed");
+        exit(1);
+        
     }
     return 0;
 
